@@ -1,0 +1,67 @@
+unit Projeto1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.XPMan;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Button1: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    XPManifest1: TXPManifest;
+    Label5: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+peso, altura, imc: real;
+begin
+  altura:= StrToFloat(Edit1.Text);
+  peso:= StrToFloat(Edit2.Text);
+  imc:= peso/(altura * altura);
+      if imc < 17 then
+      Edit3.Text:=('MUITO ABAIXO DO PESO');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 17) and (imc <= 18.99) then
+      Edit3.Text:=('Abaixo do peso');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 18.5) and (imc <= 24.99) then
+      Edit3.Text:=('Peso normal');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 25) and (imc <= 29.99) then
+      Edit3.Text:=('Acima do peso');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 30) and (imc <= 34.99) then
+      Edit3.Text:=('OBESIDADE');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 35) and (imc <= 39.99) then
+      Edit3.Text:=('OBESIDADE II [SEVERA]');
+      Edit4.Text:=FloatToStr (imc);
+      if (imc >= 40) then
+      Edit3.Text:=('OBESIDADE III [MÓRBIDA]');
+      Edit4.Text:=FloatToStr (imc);
+
+end;
+
+end.
